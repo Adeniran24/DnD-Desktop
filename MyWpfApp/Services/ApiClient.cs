@@ -1,4 +1,7 @@
 using System;
+using AdminClientWpf.Models;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Cryptography;
@@ -67,13 +70,64 @@ namespace AdminClientWpf.Services
             return tokenEl.GetString() ?? throw new Exception("Token is null.");
         }
 
-        // Default assumption: Base64(SHA256(password + salt))
+        public async Task<CurrentUser> GetCurrentUserAsync()
+        {
+            var url = $"{BaseUrl}/api/auth/me";
+            using var resp = await _http.GetAsync(url);
+            var body = await resp.Content.ReadAsStringAsync();
+
+            if (!resp.IsSuccessStatusCode)
+                throw new Exception($"Me error ({(int)resp.StatusCode}): {body}");
+
+            var user = JsonSerializer.Deserialize<CurrentUser>(body, JsonOptions());
+            return user ?? throw new Exception("Invalid profile response.");
+        }
+
+        public async Task<List<AdminUser>> GetUsersAsync()
+        {
+            var url = $"{BaseUrl}/api/admin/users";
+            using var resp = await _http.GetAsync(url);
+            var body = await resp.Content.ReadAsStringAsync();
+
+            if (!resp.IsSuccessStatusCode)
+                throw new Exception($"Users error ({(int)resp.StatusCode}): {body}");
+
+            var users = JsonSerializer.Deserialize<List<AdminUser>>(body, JsonOptions());
+            return users ?? new List<AdminUser>();
+        }
+
+        public async Task UpdateUserRoleAsync(int userId, string role)
+        {
+            var url = $"{BaseUrl}/api/admin/users/{userId}/role";
+            var payload = JsonSerializer.Serialize(new { role });
+            using var resp = await _http.PutAsync(url, new StringContent(payload, Encoding.UTF8, "application/json"));
+            var body = await resp.Content.ReadAsStringAsync();
+
+            if (!resp.IsSuccessStatusCode)
+                throw new Exception($"Role update error ({(int)resp.StatusCode}): {body}");
+        }
+
+        public async Task UpdateUserStatusAsync(int userId, bool isActive)
+        {
+            var url = $"{BaseUrl}/api/admin/users/{userId}/status";
+            var payload = JsonSerializer.Serialize(new { isActive });
+            using var resp = await _http.PutAsync(url, new StringContent(payload, Encoding.UTF8, "application/json"));
+            var body = await resp.Content.ReadAsStringAsync();
+
+            if (!resp.IsSuccessStatusCode)
+                throw new Exception($"Status update error ({(int)resp.StatusCode}): {body}");
+        }
+
+        private static JsonSerializerOptions JsonOptions()
+            => new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
+        // Default assumption: Hex(SHA256(password + salt))
         public static string ComputeClientHash(string passwordPlain, string salt)
         {
             using var sha = SHA256.Create();
             var bytes = Encoding.UTF8.GetBytes(passwordPlain + salt);
             var hash = sha.ComputeHash(bytes);
-            return Convert.ToBase64String(hash);
+            return string.Concat(hash.Select(b => b.ToString("x2")));
         }
     }
 }
