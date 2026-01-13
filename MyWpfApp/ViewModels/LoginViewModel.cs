@@ -10,10 +10,7 @@ namespace AdminClientWpf.ViewModels
 {
     public class LoginViewModel : INotifyPropertyChanged
     {
-        // TODO: change if needed
-        private const string ApiBaseUrl = "http://212.48.254.1:5000";
-
-        private readonly ApiClient _api = new(ApiBaseUrl);
+        private readonly ApiClient _api = new(ApiConfig.BaseUrl);
 
         public RelayCommand LoginCommand { get; }
         public RelayCommand CloseCommand { get; }
@@ -67,6 +64,13 @@ namespace AdminClientWpf.ViewModels
                 var token = await _api.LoginAsync(Email.Trim(), Password);
                 TokenStore.Save(token);
                 _api.SetBearer(token);
+
+                var me = await _api.GetCurrentUserAsync();
+                if (!string.Equals(me.Role, "Admin", StringComparison.OrdinalIgnoreCase))
+                {
+                    TokenStore.Clear();
+                    throw new Exception("Access denied: csak Admin felhasználó léphet be.");
+                }
 
                 // Placeholder: open dashboard window
                 var dash = new Views.DashboardWindow();
