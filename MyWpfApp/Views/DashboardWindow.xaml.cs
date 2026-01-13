@@ -1,4 +1,5 @@
 using System.Windows;
+using AdminClientWpf.ViewModels;
 
 namespace AdminClientWpf.Views
 {
@@ -7,6 +8,7 @@ namespace AdminClientWpf.Views
         public DashboardWindow()
         {
             InitializeComponent();
+            DataContext = new DashboardViewModel();
         }
     }
 }
