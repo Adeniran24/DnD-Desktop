@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:AdminClientWpf.ViewModels"
         Title="DnD Admin • Login"
-        Width="980" Height="560"
+        Width="520" Height="640"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -14,53 +14,28 @@
     </Window.DataContext>
 
     <Grid>
-        <!-- Backdrop -->
-        <Border CornerRadius="22" Background="{StaticResource Bg0Brush}" BorderBrush="#3B2A55" BorderThickness="1">
+        <Border CornerRadius="24" Background="{StaticResource Bg0Brush}" BorderBrush="#3B2A55" BorderThickness="1">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="420" />
-                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-                <!-- Left: fantasy panel -->
-                <Border Grid.Column="0" CornerRadius="22,0,0,22" Background="{StaticResource Bg1Brush}">
-                    <Grid Margin="28">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+                <DockPanel Grid.Row="0" Margin="16" LastChildFill="True" MouseLeftButtonDown="WindowDrag">
+                    <TextBlock Text="⚔ DnD Tool • Admin" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource SubTextBrush}"/>
+                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Content="—" Width="40" Margin="8,0,0,0" Command="{Binding MinimizeCommand}"/>
+                        <Button Content="✕" Width="40" Margin="8,0,0,0" Command="{Binding CloseCommand}"/>
+                    </StackPanel>
+                </DockPanel>
 
-                        <DockPanel Grid.Row="0" LastChildFill="True" MouseLeftButtonDown="WindowDrag">
-                            <TextBlock Text="⚔ DnD Tool • Admin" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource SubTextBrush}"/>
-                            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Button Content="—" Width="44" Margin="8,0,0,0" Command="{Binding MinimizeCommand}"/>
-                                <Button Content="✕" Width="44" Margin="8,0,0,0" Command="{Binding CloseCommand}"/>
-                            </StackPanel>
-                        </DockPanel>
-
-                        <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                            <TextBlock Style="{StaticResource TitleText}" Text="Welcome back, Dungeon Master."/>
-                            <TextBlock Margin="0,10,0,0" Foreground="{StaticResource SubTextBrush}" FontSize="14"
-                                       Text="Sign in to open the admin dashboard and manage users, content, and logs."/>
-                            <Border Margin="0,26,0,0" CornerRadius="18" Background="#140C1E" BorderBrush="#3B2A55" BorderThickness="1" Padding="18">
-                                <TextBlock Foreground="{StaticResource SubTextBrush}" TextWrapping="Wrap"
-                                           Text="Tip: csak Admin role-lal fog menni az /api/admin/*. Login után a token a gépen titkosítva lesz tárolva."/>
-                            </Border>
-                        </StackPanel>
-
-                        <TextBlock Grid.Row="2" Style="{StaticResource HintText}" Text="© DnD Tool • Admin Client (WPF)"/>
-                    </Grid>
-                </Border>
-
-                <!-- Right: login card -->
-                <Grid Grid.Column="1" Margin="22">
+                <Grid Grid.Row="1" Margin="28">
                     <Border x:Name="Card"
-                            CornerRadius="20"
+                            CornerRadius="22"
                             Background="{StaticResource CardBrush}"
                             BorderBrush="#3B2A55"
                             BorderThickness="1"
-                            Padding="22"
+                            Padding="28"
                             RenderTransformOrigin="0.5,0.5">
                         <Border.RenderTransform>
                             <ScaleTransform x:Name="CardScale" ScaleX="0.98" ScaleY="0.98"/>
@@ -74,27 +49,28 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <TextBlock Text="Sign in" Style="{StaticResource TitleText}"/>
-                            <TextBlock Grid.Row="1" Margin="0,6,0,0" Foreground="{StaticResource SubTextBrush}"
-                                       Text="Enter your credentials to continue."/>
+                            <TextBlock Text="Admin login" Style="{StaticResource TitleText}"/>
+                            <TextBlock Grid.Row="1" Margin="0,8,0,0" Foreground="{StaticResource SubTextBrush}"
+                                       Text="Only Admin accounts can access the dashboard."/>
 
-                            <StackPanel Grid.Row="2" Margin="0,18,0,0">
+                            <StackPanel Grid.Row="2" Margin="0,20,0,0">
                                 <TextBlock Text="Email" Style="{StaticResource HintText}"/>
-                                <TextBox Margin="0,6,0,0"
+                                <TextBox Margin="0,8,0,0"
                                          Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
                             </StackPanel>
 
-                            <StackPanel Grid.Row="3" Margin="0,14,0,0">
+                            <StackPanel Grid.Row="3" Margin="0,16,0,0">
                                 <TextBlock Text="Password" Style="{StaticResource HintText}"/>
-                                <PasswordBox x:Name="Pwd" Margin="0,6,0,0" Padding="12,10"
+                                <PasswordBox x:Name="Pwd" Margin="0,8,0,0" Padding="12,10"
                                              Background="{StaticResource Bg1Brush}"
                                              BorderBrush="#3B2A55" BorderThickness="1"
                                              PasswordChanged="PasswordChanged"/>
                             </StackPanel>
 
-                            <TextBlock Grid.Row="4" Margin="0,14,0,0"
+                            <TextBlock Grid.Row="4" Margin="0,16,0,0"
                                        Foreground="{StaticResource DangerBrush}"
                                        Text="{Binding ErrorMessage}"
                                        TextWrapping="Wrap"
@@ -102,19 +78,24 @@
 
                             <StackPanel Grid.Row="5" VerticalAlignment="Bottom">
                                 <Button Content="{Binding ButtonText}"
-                                        Height="44"
+                                        Height="46"
+                                        IsDefault="True"
                                         Command="{Binding LoginCommand}"
                                         IsEnabled="{Binding CanLogin}"/>
-                                <TextBlock Margin="0,12,0,0" Style="{StaticResource HintText}" TextWrapping="Wrap"
-                                           Text="A token 12 óráig él (backend: Expires=UtcNow+12h)."/>
+                                <Border Margin="0,14,0,0" CornerRadius="12" Background="{StaticResource Bg1Brush}" BorderBrush="#3B2A55" BorderThickness="1" Padding="12">
+                                    <TextBlock Foreground="{StaticResource SubTextBrush}" TextWrapping="Wrap"
+                                               Text="Tip: csak Admin role-lal fog menni az /api/admin/*. Login után a token a gépen titkosítva lesz tárolva."/>
+                                </Border>
                             </StackPanel>
+
+                            <TextBlock Grid.Row="6" Margin="0,16,0,0" Style="{StaticResource HintText}" TextAlignment="Center"
+                                       Text="© DnD Tool • Admin Client (WPF)"/>
                         </Grid>
                     </Border>
                 </Grid>
             </Grid>
         </Border>
 
-        <!-- Startup animation -->
         <Grid.Triggers>
             <EventTrigger RoutedEvent="FrameworkElement.Loaded">
                 <BeginStoryboard>
