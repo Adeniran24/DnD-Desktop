@@ -51,6 +51,7 @@ namespace AdminClientWpf.ViewModels
 
         private void Refresh()
         {
+            OnPropertyChanged(nameof(CanLogin));
             LoginCommand.RaiseCanExecuteChanged();
         }
 
