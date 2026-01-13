@@ -1,5 +1,5 @@
 ﻿MyWpfApp
-
+1.0.0.0
 
 winexe
 C#
@@ -12,7 +12,7 @@ TRACE;DEBUG;NET;NET9_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR
 C:\Users\Adeniranak\Desktop\DNDBackend\DnD-Desktop\MyWpfApp\App.xaml
 31716652964
 
-141555328722
+16-756295500
 200-1531957912
 MainWindow.xaml;Themes\DnDTheme.xaml;Views\DashboardWindow.xaml;
 

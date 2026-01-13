@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Adeniran Ádám\\Desktop\\dndDesktop\\Teszt Login\\MyWpfApp\\MyWpfApp.csproj": {}
+    "C:\\Users\\Adeniranak\\Desktop\\DNDBackend\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Adeniran Ádám\\Desktop\\dndDesktop\\Teszt Login\\MyWpfApp\\MyWpfApp.csproj": {
+    "C:\\Users\\Adeniranak\\Desktop\\DNDBackend\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Adeniran Ádám\\Desktop\\dndDesktop\\Teszt Login\\MyWpfApp\\MyWpfApp.csproj",
+        "projectUniqueName": "C:\\Users\\Adeniranak\\Desktop\\DNDBackend\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj",
         "projectName": "MyWpfApp",
-        "projectPath": "C:\\Users\\Adeniran Ádám\\Desktop\\dndDesktop\\Teszt Login\\MyWpfApp\\MyWpfApp.csproj",
-        "packagesPath": "C:\\Users\\Adeniran Ádám\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Adeniran Ádám\\Desktop\\dndDesktop\\Teszt Login\\MyWpfApp\\obj\\",
+        "projectPath": "C:\\Users\\Adeniranak\\Desktop\\DNDBackend\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj",
+        "packagesPath": "C:\\Users\\Adeniranak\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Adeniranak\\Desktop\\DNDBackend\\DnD-Desktop\\MyWpfApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Adeniran Ádám\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Adeniranak\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -69,7 +69,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
