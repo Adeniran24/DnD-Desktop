@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:AdminClientWpf.ViewModels"
         Title="DnD Admin • Login"
-        Width="980" Height="560"
+        Width="1000" Height="600"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -15,7 +15,7 @@
 
     <Grid>
         <!-- Backdrop -->
-        <Border CornerRadius="22" Background="{StaticResource Bg0Brush}" BorderBrush="#3B2A55" BorderThickness="1">
+        <Border CornerRadius="20" Background="{StaticResource Bg0Brush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -23,8 +23,8 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Left: fantasy panel -->
-                <Border Grid.Column="0" CornerRadius="22,0,0,22" Background="{StaticResource Bg1Brush}">
-                    <Grid Margin="28">
+                <Border Grid.Column="0" CornerRadius="20,0,0,20" Background="{StaticResource Bg1Brush}">
+                    <Grid Margin="40">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
@@ -34,18 +34,21 @@
                         <DockPanel Grid.Row="0" LastChildFill="True" MouseLeftButtonDown="WindowDrag">
                             <TextBlock Text="⚔ DnD Tool • Admin" FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource SubTextBrush}"/>
                             <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Button Content="—" Width="44" Margin="8,0,0,0" Command="{Binding MinimizeCommand}"/>
-                                <Button Content="✕" Width="44" Margin="8,0,0,0" Command="{Binding CloseCommand}"/>
+                                <Button Content="—" Width="44" Height="36" Margin="8,0,0,0" Command="{Binding MinimizeCommand}" Padding="0"/>
+                                <Button Content="✕" Width="44" Height="36" Margin="8,0,0,0" Command="{Binding CloseCommand}" Padding="0"/>
                             </StackPanel>
                         </DockPanel>
 
                         <StackPanel Grid.Row="1" VerticalAlignment="Center">
-                            <TextBlock Style="{StaticResource TitleText}" Text="Welcome back, Dungeon Master."/>
-                            <TextBlock Margin="0,10,0,0" Foreground="{StaticResource SubTextBrush}" FontSize="14"
+                            <TextBlock Style="{StaticResource TitleText}" Text="Welcome back,&#x0a;Dungeon Master."/>
+                            <TextBlock Margin="0,16,0,0" Foreground="{StaticResource SubTextBrush}" FontSize="15"
                                        Text="Sign in to open the admin dashboard. This client is restricted to Admin users only."/>
-                            <Border Margin="0,26,0,0" CornerRadius="18" Background="#140C1E" BorderBrush="#3B2A55" BorderThickness="1" Padding="18">
-                                <TextBlock Foreground="{StaticResource SubTextBrush}" TextWrapping="Wrap"
-                                           Text="Tip: csak Admin role-lal fog menni az /api/admin/*. Login után a token a gépen titkosítva lesz tárolva."/>
+                            <Border Margin="0,32,0,0" CornerRadius="14" Background="{StaticResource Bg2Brush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Padding="16">
+                                <StackPanel>
+                                    <TextBlock Foreground="{StaticResource AccentBrush}" FontWeight="SemiBold" FontSize="12" Text="💡 TIP"/>
+                                    <TextBlock Margin="0,8,0,0" Foreground="{StaticResource SubTextBrush}" TextWrapping="Wrap" FontSize="13"
+                                               Text="Admin role is required for /api/admin/* endpoints. Your token will be securely stored after login."/>
+                                </StackPanel>
                             </Border>
                         </StackPanel>
 
@@ -54,16 +57,16 @@
                 </Border>
 
                 <!-- Right: login card -->
-                <Grid Grid.Column="1" Margin="22">
+                <Grid Grid.Column="1" Margin="28">
                     <Border x:Name="Card"
-                            CornerRadius="20"
+                            CornerRadius="18"
                             Background="{StaticResource CardBrush}"
-                            BorderBrush="#3B2A55"
+                            BorderBrush="{StaticResource BorderBrush}"
                             BorderThickness="1"
-                            Padding="22"
+                            Padding="28"
                             RenderTransformOrigin="0.5,0.5">
                         <Border.RenderTransform>
-                            <ScaleTransform x:Name="CardScale" ScaleX="0.98" ScaleY="0.98"/>
+                            <ScaleTransform x:Name="CardScale" ScaleX="0.96" ScaleY="0.96"/>
                         </Border.RenderTransform>
 
                         <Grid>
@@ -77,36 +80,49 @@
                             </Grid.RowDefinitions>
 
                             <TextBlock Text="Sign in" Style="{StaticResource TitleText}"/>
-                            <TextBlock Grid.Row="1" Margin="0,6,0,0" Foreground="{StaticResource SubTextBrush}"
+                            <TextBlock Grid.Row="1" Margin="0,8,0,0" Foreground="{StaticResource SubTextBrush}"
                                        Text="Enter your credentials to continue."/>
 
-                            <StackPanel Grid.Row="2" Margin="0,18,0,0">
+                            <StackPanel Grid.Row="2" Margin="0,24,0,0">
                                 <TextBlock Text="Email" Style="{StaticResource HintText}"/>
-                                <TextBox Margin="0,6,0,0"
-                                         Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBox Margin="0,8,0,0"
+                                         Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
+                                         TextChanged="EmailChanged"/>
                             </StackPanel>
 
-                            <StackPanel Grid.Row="3" Margin="0,14,0,0">
+                            <StackPanel Grid.Row="3" Margin="0,16,0,0">
                                 <TextBlock Text="Password" Style="{StaticResource HintText}"/>
-                                <PasswordBox x:Name="Pwd" Margin="0,6,0,0" Padding="12,10"
+                                <PasswordBox x:Name="Pwd" Margin="0,8,0,0" Padding="14,12"
                                              Background="{StaticResource Bg1Brush}"
-                                             BorderBrush="#3B2A55" BorderThickness="1"
-                                             PasswordChanged="PasswordChanged"/>
+                                             BorderBrush="{StaticResource BorderBrush}" BorderThickness="1.5"
+                                             PasswordChanged="PasswordChanged"
+                                             Foreground="{StaticResource TextBrush}"/>
                             </StackPanel>
 
-                            <TextBlock Grid.Row="4" Margin="0,14,0,0"
+                            <TextBlock Grid.Row="4" Margin="0,16,0,0"
                                        Foreground="{StaticResource DangerBrush}"
                                        Text="{Binding ErrorMessage}"
                                        TextWrapping="Wrap"
+                                       FontSize="13"
                                        Visibility="{Binding HasError, Converter={StaticResource BooleanToVisibilityConverter}}"/>
 
                             <StackPanel Grid.Row="5" VerticalAlignment="Bottom">
                                 <Button Content="{Binding ButtonText}"
-                                        Height="44"
+                                        Height="48"
+                                        Margin="0,24,0,0"
                                         Command="{Binding LoginCommand}"
-                                        IsEnabled="{Binding CanLogin}"/>
-                                <TextBlock Margin="0,12,0,0" Style="{StaticResource HintText}" TextWrapping="Wrap"
-                                           Text="A token 12 óráig él (backend: Expires=UtcNow+12h)."/>
+                                        IsEnabled="{Binding CanLogin, FallbackValue=True}"
+                                        FontSize="15"/>
+                                <TextBlock Margin="0,14,0,0" Style="{StaticResource HintText}" TextWrapping="Wrap"
+                                           Text="Your session token is valid for 12 hours and securely stored locally."/>
+                            </StackPanel>
+                            <!-- DEBUG PANEL -->
+                            <StackPanel Grid.Row="6" Margin="8,24,8,0" Background="#22000000" Visibility="Visible">
+                                <TextBlock Text="DEBUG INFO:" FontWeight="Bold" Foreground="Red"/>
+                                <TextBlock Text="{Binding Email, StringFormat=Email: {0}}" Foreground="Red"/>
+                                <TextBlock Text="{Binding Password, StringFormat=Password: {0}}" Foreground="Red"/>
+                                <TextBlock Text="{Binding CanLogin, StringFormat=CanLogin: {0}}" Foreground="Red"/>
+                                <TextBlock Text="{Binding IsBusy, StringFormat=IsBusy: {0}}" Foreground="Red"/>
                             </StackPanel>
                         </Grid>
                     </Border>
@@ -121,16 +137,21 @@
                     <Storyboard>
                         <DoubleAnimation Storyboard.TargetName="Card"
                                          Storyboard.TargetProperty="Opacity"
-                                         From="0" To="1" Duration="0:0:0.35"/>
+                                         From="0" To="1" Duration="0:0:0.5"/>
                         <DoubleAnimation Storyboard.TargetName="CardScale"
                                          Storyboard.TargetProperty="ScaleX"
-                                         From="0.96" To="1.0" Duration="0:0:0.35"/>
+                                         From="0.94" To="1.0" Duration="0:0:0.5">
+                            <DoubleAnimation.EasingFunction>
+                                <QuadraticEase EasingMode="EaseOut"/>
+                            </DoubleAnimation.EasingFunction>
+                        </DoubleAnimation>
                         <DoubleAnimation Storyboard.TargetName="CardScale"
                                          Storyboard.TargetProperty="ScaleY"
-                                         From="0.96" To="1.0" Duration="0:0:0.35"/>
+                                         From="0.94" To="1.0" Duration="0:0:0.5"/>
                     </Storyboard>
                 </BeginStoryboard>
             </EventTrigger>
         </Grid.Triggers>
     </Grid>
 </Window>
+

@@ -21,6 +21,27 @@ namespace AdminClientWpf
             if (DataContext is ViewModels.LoginViewModel vm)
             {
                 vm.Password = Pwd.Password;
+                // Always refresh CanLogin state
+                vm.Refresh();
+                // Show error if password is empty
+                if (string.IsNullOrWhiteSpace(vm.Password))
+                {
+                    vm.ErrorMessage = "Password cannot be empty.";
+                }
+                else
+                {
+                    vm.ErrorMessage = string.Empty;
+                }
+            }
+        }
+
+        private void EmailChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (DataContext is ViewModels.LoginViewModel vm)
+            {
+                // Always update password in ViewModel to keep in sync
+                vm.Password = Pwd.Password;
+                vm.Refresh();
             }
         }
     }

@@ -2,6 +2,6 @@ namespace AdminClientWpf.Services
 {
     public static class ApiConfig
     {
-        public const string BaseUrl = "http://212.48.254.1:5000";
+        public const string BaseUrl = "https://api.dnd-tool.com";
     }
 }

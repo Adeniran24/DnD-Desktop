@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Adeniran Ádám\\Desktop\\dndDesktop\\Teszt Login\\MyWpfApp\\MyWpfApp.csproj": {}
+    "C:\\Users\\Adeniran\\Desktop\\Projects\\Github\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Adeniran Ádám\\Desktop\\dndDesktop\\Teszt Login\\MyWpfApp\\MyWpfApp.csproj": {
+    "C:\\Users\\Adeniran\\Desktop\\Projects\\Github\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Adeniran Ádám\\Desktop\\dndDesktop\\Teszt Login\\MyWpfApp\\MyWpfApp.csproj",
+        "projectUniqueName": "C:\\Users\\Adeniran\\Desktop\\Projects\\Github\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj",
         "projectName": "MyWpfApp",
-        "projectPath": "C:\\Users\\Adeniran Ádám\\Desktop\\dndDesktop\\Teszt Login\\MyWpfApp\\MyWpfApp.csproj",
-        "packagesPath": "C:\\Users\\Adeniran Ádám\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Adeniran Ádám\\Desktop\\dndDesktop\\Teszt Login\\MyWpfApp\\obj\\",
+        "projectPath": "C:\\Users\\Adeniran\\Desktop\\Projects\\Github\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj",
+        "packagesPath": "C:\\Users\\Adeniran\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Adeniran\\Desktop\\Projects\\Github\\DnD-Desktop\\MyWpfApp\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Adeniran Ádám\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\Adeniran\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0-windows"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net9.0-windows7.0": {
@@ -61,6 +54,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[9.0.14, 9.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.14, 9.0.14]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -69,7 +80,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

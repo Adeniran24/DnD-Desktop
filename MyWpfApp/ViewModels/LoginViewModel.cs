@@ -17,14 +17,47 @@ namespace AdminClientWpf.ViewModels
         public RelayCommand MinimizeCommand { get; }
 
         private string _email = "";
-        public string Email { get => _email; set { _email = value; OnPropertyChanged(); Refresh(); } }
+        public string Email
+        {
+            get => _email;
+            set
+            {
+                _email = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CanLogin));
+                Refresh();
+                if (!string.IsNullOrWhiteSpace(_email) && !string.IsNullOrWhiteSpace(_password))
+                    ErrorMessage = string.Empty;
+            }
+        }
 
         // Set from code-behind PasswordBox
         private string _password = "";
-        public string Password { get => _password; set { _password = value; OnPropertyChanged(); Refresh(); } }
+        public string Password
+        {
+            get => _password;
+            set
+            {
+                _password = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CanLogin));
+                Refresh();
+                if (!string.IsNullOrWhiteSpace(_email) && !string.IsNullOrWhiteSpace(_password))
+                    ErrorMessage = string.Empty;
+            }
+        }
 
-        private bool _isBusy;
-        public bool IsBusy { get => _isBusy; set { _isBusy = value; OnPropertyChanged(); Refresh(); OnPropertyChanged(nameof(ButtonText)); } }
+        private bool _isBusy = false;
+        public bool IsBusy {
+            get => _isBusy;
+            set {
+                _isBusy = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CanLogin));
+                Refresh();
+                OnPropertyChanged(nameof(ButtonText));
+            }
+        }
 
         private string _errorMessage = "";
         public string ErrorMessage { get => _errorMessage; set { _errorMessage = value; OnPropertyChanged(); OnPropertyChanged(nameof(HasError)); } }
@@ -49,7 +82,7 @@ namespace AdminClientWpf.ViewModels
             });
         }
 
-        private void Refresh()
+        public void Refresh()
         {
             LoginCommand.RaiseCanExecuteChanged();
         }
@@ -57,6 +90,11 @@ namespace AdminClientWpf.ViewModels
         private async Task LoginAsync()
         {
             ErrorMessage = "";
+            if (!CanLogin)
+            {
+                ErrorMessage = "Please enter both email and password.";
+                return;
+            }
             IsBusy = true;
 
             try
