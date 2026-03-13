@@ -111,18 +111,11 @@
                                         Height="48"
                                         Margin="0,24,0,0"
                                         Command="{Binding LoginCommand}"
+                                    IsDefault="True"
                                         IsEnabled="{Binding CanLogin, FallbackValue=True}"
                                         FontSize="15"/>
                                 <TextBlock Margin="0,14,0,0" Style="{StaticResource HintText}" TextWrapping="Wrap"
                                            Text="Your session token is valid for 12 hours and securely stored locally."/>
-                            </StackPanel>
-                            <!-- DEBUG PANEL -->
-                            <StackPanel Grid.Row="6" Margin="8,24,8,0" Background="#22000000" Visibility="Visible">
-                                <TextBlock Text="DEBUG INFO:" FontWeight="Bold" Foreground="Red"/>
-                                <TextBlock Text="{Binding Email, StringFormat=Email: {0}}" Foreground="Red"/>
-                                <TextBlock Text="{Binding Password, StringFormat=Password: {0}}" Foreground="Red"/>
-                                <TextBlock Text="{Binding CanLogin, StringFormat=CanLogin: {0}}" Foreground="Red"/>
-                                <TextBlock Text="{Binding IsBusy, StringFormat=IsBusy: {0}}" Foreground="Red"/>
                             </StackPanel>
                         </Grid>
                     </Border>

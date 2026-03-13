@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Adeniran\\Desktop\\Projects\\Github\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj": {}
+    "C:\\Users\\Adeniran\\Documents\\GitHub\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Adeniran\\Desktop\\Projects\\Github\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj": {
+    "C:\\Users\\Adeniran\\Documents\\GitHub\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Adeniran\\Desktop\\Projects\\Github\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj",
+        "projectUniqueName": "C:\\Users\\Adeniran\\Documents\\GitHub\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj",
         "projectName": "MyWpfApp",
-        "projectPath": "C:\\Users\\Adeniran\\Desktop\\Projects\\Github\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj",
+        "projectPath": "C:\\Users\\Adeniran\\Documents\\GitHub\\DnD-Desktop\\MyWpfApp\\MyWpfApp.csproj",
         "packagesPath": "C:\\Users\\Adeniran\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Adeniran\\Desktop\\Projects\\Github\\DnD-Desktop\\MyWpfApp\\obj\\",
+        "outputPath": "C:\\Users\\Adeniran\\Documents\\GitHub\\DnD-Desktop\\MyWpfApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Adeniran\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -80,7 +80,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
